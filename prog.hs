@@ -1,6 +1,6 @@
 import Data.List
 
--- Questão 1 (Letra a)
+-- Questão 1 (Letra a) ----------------------------
 toBinario :: Int -> [Int]
 toBinario 0 = [0]
 toBinario 1 = [1]
@@ -9,7 +9,7 @@ toBinario n
   | n `mod` 2 == 0 = toBinario (n `div` 2) ++ [0]
 ---------------------------------------------------
 
--- Questão 1 (Letra b)
+-- Questão 1 (Letra b) ----------------------------
 toDecimal :: [Int] -> Int
 toDecimal [0] = 0
 toDecimal lista = toDecimalAux lista (length(lista) - 1)
@@ -20,7 +20,7 @@ toDecimalAux (x:xs) n =
   (2^n) * x + toDecimalAux (xs) (n - 1)
 ---------------------------------------------------
 
--- Questão 2
+-- Questão 2 --------------------------------------
 fun :: [Int] -> [(Int, Int)]
 fun [] = []
 fun (x : xs) = [(x, tam_ciclo_n x)] ++ fun xs
@@ -32,7 +32,7 @@ tam_ciclo_n num
   | otherwise = 1 + tam_ciclo_n ((3 * num) + 1)
 ---------------------------------------------------
 
--- Questão 3
+-- Questão 3 --------------------------------------
 funIntercalar :: [String] -> [String]
 funIntercalar lista =
   [getLetterIndex_n index lista | index <- [0..length(lista!!0) - 1] ]
@@ -43,7 +43,7 @@ getLetterIndex_n index (x:xs) =
   [x!!index] ++ getLetterIndex_n index (xs)
 ---------------------------------------------------
 
--- Questão 4
+-- Questão 4 --------------------------------------
 fun4 :: [t] -> [[t]]
 fun4 lista = [(sub_list_1 lista), (sub_list_2 lista)]
 
@@ -56,7 +56,7 @@ sub_list_2 lista =
   [lista!!n | n <- [0..length(lista) - 1], (n + 1) `mod` 2 == 0]
 ---------------------------------------------------
 
--- Questão 6
+-- Questão 6 --------------------------------------
 intersecao :: [Int] -> [Int] -> [Int]
 intersecao [] _ = []
 intersecao (x:xs) (lista2)
@@ -71,7 +71,7 @@ pertence num (x:xs)
   | otherwise = pertence num xs
 ---------------------------------------------------
 
--- Questão 10
+-- Questão 10 -------------------------------------
 obterFatores :: Int -> [Int]
 obterFatores num = [x | x <- [1 .. (num `div` 2)], (num `mod` x) == 0]
 
@@ -84,7 +84,7 @@ listaPerfeita :: [Int] -> [Int]
 listaPerfeita lista = filter isPerfeito lista
 ---------------------------------------------------
 
--- Questão 11
+-- Questão 11 -------------------------------------
 data Classe = Aluno String Float Float Float deriving(Eq, Ord)
 
 processar :: [Classe] -> [(String, Float)]
@@ -99,7 +99,7 @@ getMedia (Aluno nome n1 n2 n3) =
   (nome, ((n1 + n2 + n3) / 3.0))
 ---------------------------------------------------
 
--- Questão 12
+-- Questão 12 -------------------------------------
 maxValue :: Int -> Int -> Int
 maxValue a b
   | a >= b = a 
@@ -115,7 +115,7 @@ mmcAux a b n
 
 ---------------------------------------------------
 
--- Questão 14
+-- Questão 14 -------------------------------------
 bolha :: [Int] -> [Int]
 bolha [] = []
 bolha [x] = [x]
