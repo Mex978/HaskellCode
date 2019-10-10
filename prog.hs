@@ -85,12 +85,13 @@ listaPerfeita lista = filter isPerfeito lista
 -- Questão 11
 data Classe = Aluno String Float Float Float
 
-calcMedias :: [Classe] -> [Float]
+calcMedias :: [Classe] -> [(String, Float)]
 calcMedias [] = []
 calcMedias (x:xs) = [getMedia x] ++ calcMedias xs
 
-getMedia :: Classe -> Float
-getMedia (Aluno _ n1 n2 n3) = (n1 + n2 + n3) / 3.0
+getMedia :: Classe -> (String, Float)
+getMedia (Aluno nome n1 n2 n3) =
+  (nome, ((n1 + n2 + n3) / 3.0))
 
 ---------------------------------------------------
 
