@@ -83,9 +83,10 @@ listaPerfeita lista = filter isPerfeito lista
 ---------------------------------------------------
 
 -- Questão 11
-data Aluno = String Int Int Int
-getMedia :: Aluno -> Float
-getMedia (Aluno _ n1 n2 n3) = (sum n1 n2 n3) `div` 3
+data Classe = Aluno String Float Float Float
+
+getMedia :: Classe -> Float
+getMedia (Aluno _ n1 n2 n3) = n1
 
 ---------------------------------------------------
 
