@@ -85,7 +85,7 @@ listaPerfeita lista = filter isPerfeito lista
 ---------------------------------------------------
 
 -- Questão 11
-data Classe = Aluno String Float Float Float deriving(Show, Eq, Ord)
+data Classe = Aluno String Float Float Float deriving(Eq, Ord)
 
 processar :: [Classe] -> [(String, Float)]
 processar lista = calcMedias (sort lista)
@@ -97,7 +97,6 @@ calcMedias (x:xs) = [getMedia x] ++ calcMedias xs
 getMedia :: Classe -> (String, Float)
 getMedia (Aluno nome n1 n2 n3) =
   (nome, ((n1 + n2 + n3) / 3.0))
-
 ---------------------------------------------------
 
 -- Questão 12
