@@ -70,22 +70,53 @@ pertence num (x:xs)
 ---------------------------------------------------
 
 -- Questão 10
-listaPerfeita :: [Int] -> [Int]
-listaPerfeita (x:xs)
-  | isPerfeito x = [x] ++ listaPerfeita xs
-  | otherwise = listaPerfeita xs
+obterFatores :: Int -> [Int]
+obterFatores num = [x | x <- [1 .. (num `div` 2)], (num `mod` x) == 0]
 
 isPerfeito :: Int -> Bool
 isPerfeito num
-  | somatorioDivisores num 1 == num = True
-  | otherwise = False
+    | (sum (obterFatores num) == num ) = True
+    | otherwise = False
 
-somatorioDivisores :: Int -> Int -> Int
-somatorioDivisores num denominador
-  | denominador >= num `div` 2 = 0
-somatorioDivisores num denominador
-  | num `mod` denominador == 0 = denominador + somatorioDivisores num (denominador + 1)
-  | otherwise = somatorioDivisores num (denominador + 1)
+listaPerfeita :: [Int] -> [Int]
+listaPerfeita lista = filter isPerfeito lista
 ---------------------------------------------------
 
+-- Questão 11
+data Aluno = String Int Int Int
+getMedia :: Aluno -> Float
+getMedia (Aluno _ n1 n2 n3) = (sum n1 n2 n3) `div` 3
 
+---------------------------------------------------
+
+-- Questão 12
+maxValue :: Int -> Int -> Int
+maxValue a b
+  | a >= b = a 
+  | otherwise = b
+
+mmc :: Int -> Int -> Int
+mmc a b = mmcAux a b (maxValue a b)
+
+mmcAux :: Int -> Int -> Int -> Int
+mmcAux a b n
+  | n `mod` a == 0, n `mod` b == 0 = n
+  | otherwise = mmcAux a b (n + 1)
+
+---------------------------------------------------
+
+-- Questão 14
+bolha :: [Int] -> [Int]
+bolha [] = []
+bolha [x] = [x]
+bolha (a:b:x) 
+  | a <= b = a:bolha (b:x)
+  | otherwise = b: bolha (a:x)
+bubble :: [Int] -> Int -> [Int]
+bubble lista n
+  | n == (length lista) = lista
+  | otherwise = bubble (bolha lista) (n+1)
+bubbleSort :: [Int] -> [Int]
+bubbleSort lista = 
+  bubble lista 0
+---------------------------------------------------
