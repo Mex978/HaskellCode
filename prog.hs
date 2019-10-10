@@ -1,3 +1,5 @@
+import Data.List
+
 -- Questão 1 (Letra a)
 toBinario :: Int -> [Int]
 toBinario 0 = [0]
@@ -83,7 +85,10 @@ listaPerfeita lista = filter isPerfeito lista
 ---------------------------------------------------
 
 -- Questão 11
-data Classe = Aluno String Float Float Float
+data Classe = Aluno String Float Float Float deriving(Show, Eq, Ord)
+
+processar :: [Classe] -> [(String, Float)]
+processar lista = calcMedias (sort lista)
 
 calcMedias :: [Classe] -> [(String, Float)]
 calcMedias [] = []
